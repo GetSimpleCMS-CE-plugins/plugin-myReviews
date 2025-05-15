@@ -72,7 +72,7 @@ function myreviews($platform = '', $count = 0)
 
 	global $SITEURL;
 
-	echo '<link href="' . $SITEURL . 'plugins/myReviews/css/style.css" rel="stylesheet">';
+	echo '<link href="' . $SITEURL . 'plugins/myReviews/css/myreviews.css" rel="stylesheet">';
 
 	$db = new SQLite3(filename: GSDATAOTHERPATH . 'reviews.db');
 
