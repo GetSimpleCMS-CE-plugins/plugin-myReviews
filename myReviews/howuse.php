@@ -169,7 +169,7 @@
     • <strong>1 item per slide:</strong> Always shows 1 review at all screen sizes
 </div>
 
-<div class="note" style="background: #fff3e0; padding: 15px; border-radius: 5px; border-left: 4px solid #ff9800; margin-top: 20px;">
+<!--div class="note" style="background: #fff3e0; padding: 15px; border-radius: 5px; border-left: 4px solid #ff9800; margin-top: 20px;">
     <strong>Animation Features:</strong><br>
     • Smooth zoom effect with blur transition<br>
     • Staggered animations - each review appears with a slight delay<br>
@@ -180,7 +180,7 @@
 
 <div class="note" style="margin-top: 25px;">
     Both functions display reviews randomly from your SQLite database. The carousel includes navigation arrows and indicator dots for manual control.
-</div>
+</div-->
 
 <div class="note" style="background: #f3e5f5; padding: 15px; border-radius: 5px; border-left: 4px solid #9c27b0; margin-top: 20px;">
     <strong>💡 Pro Tips:</strong><br>
