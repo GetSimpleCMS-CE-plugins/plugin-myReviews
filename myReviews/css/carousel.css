@@ -1,0 +1,428 @@
+.reviews-carousel-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    touch-action: pan-y pinch-zoom;
+}
+
+.reviews-carousel-container {
+    position: relative;
+    width: 100%;
+    min-height: 350px;
+}
+
+.carousel-slide {
+    display: none;
+    width: 100%;
+    opacity: 0;
+    transform: scale(0.85);
+    filter: blur(8px);
+    transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1),
+                filter 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.carousel-slide:first-child {
+    position: relative;
+}
+
+.carousel-slide.active {
+    display: block;
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+    position: relative;
+}
+
+/* Grid dla wielu opinii */
+.carousel-slide-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+}
+
+/* 2 opinie obok siebie - DESKTOP */
+.items-2 .carousel-slide-grid {
+    grid-template-columns: repeat(2, 1fr);
+}
+
+/* 3 opinie obok siebie - DESKTOP */
+.items-3 .carousel-slide-grid {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* 4 opinie obok siebie - DESKTOP */
+.items-4 .carousel-slide-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* Animacje dla poszczególnych opinii w slidzie - staggered effect */
+.carousel-slide.active .opinion {
+    animation: slideInFromRight 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.carousel-slide.active .opinion:nth-child(1) {
+    animation-delay: 0.05s;
+}
+
+.carousel-slide.active .opinion:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.carousel-slide.active .opinion:nth-child(3) {
+    animation-delay: 0.15s;
+}
+
+.carousel-slide.active .opinion:nth-child(4) {
+    animation-delay: 0.2s;
+}
+
+/* Główna animacja - wjazd z prawej strony z zoom */
+@keyframes slideInFromRight {
+    0% {
+        opacity: 0;
+        transform: translateX(60px) scale(0.85);
+    }
+    60% {
+        transform: translateX(-5px) scale(1.02);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+    }
+}
+
+/* Dodatkowa animacja dla zawartości opinii */
+.carousel-slide.active .opinion-data {
+    animation: slideFromLeft 0.6s ease-out both;
+}
+
+.carousel-slide.active .opinion:nth-child(1) .opinion-data {
+    animation-delay: 0.25s;
+}
+
+.carousel-slide.active .opinion:nth-child(2) .opinion-data {
+    animation-delay: 0.3s;
+}
+
+.carousel-slide.active .opinion:nth-child(3) .opinion-data {
+    animation-delay: 0.35s;
+}
+
+.carousel-slide.active .opinion:nth-child(4) .opinion-data {
+    animation-delay: 0.4s;
+}
+
+.carousel-slide.active .opinion-platform {
+    animation: rotateIn 0.5s ease-out both;
+}
+
+.carousel-slide.active .opinion:nth-child(1) .opinion-platform {
+    animation-delay: 0.35s;
+}
+
+.carousel-slide.active .opinion:nth-child(2) .opinion-platform {
+    animation-delay: 0.4s;
+}
+
+.carousel-slide.active .opinion:nth-child(3) .opinion-platform {
+    animation-delay: 0.45s;
+}
+
+.carousel-slide.active .opinion:nth-child(4) .opinion-platform {
+    animation-delay: 0.5s;
+}
+
+.carousel-slide.active .opinion-rating {
+    animation: scaleIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.carousel-slide.active .opinion:nth-child(1) .opinion-rating {
+    animation-delay: 0.45s;
+}
+
+.carousel-slide.active .opinion:nth-child(2) .opinion-rating {
+    animation-delay: 0.5s;
+}
+
+.carousel-slide.active .opinion:nth-child(3) .opinion-rating {
+    animation-delay: 0.55s;
+}
+
+.carousel-slide.active .opinion:nth-child(4) .opinion-rating {
+    animation-delay: 0.6s;
+}
+
+.carousel-slide.active .opinion-comments {
+    animation: fadeInUp 0.6s ease-out both;
+}
+
+.carousel-slide.active .opinion:nth-child(1) .opinion-comments {
+    animation-delay: 0.55s;
+}
+
+.carousel-slide.active .opinion:nth-child(2) .opinion-comments {
+    animation-delay: 0.6s;
+}
+
+.carousel-slide.active .opinion:nth-child(3) .opinion-comments {
+    animation-delay: 0.65s;
+}
+
+.carousel-slide.active .opinion:nth-child(4) .opinion-comments {
+    animation-delay: 0.7s;
+}
+
+@keyframes slideFromLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes rotateIn {
+    from {
+        opacity: 0;
+        transform: rotate(-180deg) scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: rotate(0) scale(1);
+    }
+}
+
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.carousel-prev,
+.carousel-next {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #e0e0e0;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    background: #CF3805;
+    border-color: #CF3805;
+    box-shadow: 0 6px 20px rgba(207, 56, 5, 0.4);
+    transform: translateY(-50%) scale(1.15);
+}
+
+.carousel-prev:hover svg,
+.carousel-next:hover svg {
+    stroke: white;
+}
+
+.carousel-prev:active,
+.carousel-next:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.carousel-prev {
+    left: -30px;
+}
+
+.carousel-next {
+    right: -50px;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+    max-width: 90%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 5px 0;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.carousel-indicators::-webkit-scrollbar {
+    height: 3px;
+}
+
+.carousel-indicators::-webkit-scrollbar-thumb {
+    background: #CF3805;
+    border-radius: 10px;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #ddd;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    flex-shrink: 0;
+}
+
+.indicator::before {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.indicator.active {
+    background: #CF3805;
+    transform: scale(1.4);
+}
+
+.indicator.active::before {
+    border-color: rgba(207, 56, 5, 0.3);
+    animation: pulse 2s infinite;
+}
+
+.indicator:hover {
+    background: #CF3805;
+    transform: scale(1.2);
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+}
+
+/* ========================================
+   RESPONSIVE DESIGN - Mobile First
+   ======================================== */
+
+/* TABLET - Medium screens (769px - 1024px) */
+@media (max-width: 1024px) {
+    /* 4 opinie -> 2 na tablecie */
+    .items-4 .carousel-slide-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .reviews-carousel-container {
+        min-height: 320px;
+    }
+}
+
+/* MOBILE & TABLET - do 768px */
+@media (max-width: 768px) {
+    /* WSZYSTKIE KONFIGURACJE -> 1 opinia na mobile */
+    .items-2 .carousel-slide-grid,
+    .items-3 .carousel-slide-grid,
+    .items-4 .carousel-slide-grid {
+        grid-template-columns: 1fr !important;
+    }
+    
+    /* Ukryj drugie, trzecie i czwarte opinie */
+    .items-2 .carousel-slide-grid .opinion:nth-child(n+2),
+    .items-3 .carousel-slide-grid .opinion:nth-child(n+2),
+    .items-4 .carousel-slide-grid .opinion:nth-child(n+2) {
+        display: none;
+    }
+    
+    /* Ukryj przyciski i wskaźniki na mobile */
+    .carousel-desktop-only {
+        display: none !important;
+    }
+    
+    .reviews-carousel-wrapper {
+        padding-bottom: 20px;
+    }
+    
+    .reviews-carousel-container {
+        min-height: 300px;
+        cursor: grab;
+    }
+    
+    .reviews-carousel-container:active {
+        cursor: grabbing;
+    }
+    
+    .carousel-slide-grid {
+        gap: 0;
+    }
+    
+    /* Uproszczone animacje na mobile dla wydajności */
+    .carousel-slide.active .opinion {
+        animation: simpleFadeIn 0.5s ease-out both;
+    }
+    
+    @keyframes simpleFadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(15px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Wyłącz staggered delays na mobile */
+    .carousel-slide.active .opinion:nth-child(1) {
+        animation-delay: 0s;
+    }
+    
+    .carousel-slide.active .opinion-data,
+    .carousel-slide.active .opinion-platform,
+    .carousel-slide.active .opinion-rating,
+    .carousel-slide.active .opinion-comments {
+        animation: none;
+    }
+}
+
+/* EXTRA SMALL MOBILE - bardzo małe telefony */
+@media (max-width: 360px) {
+    .reviews-carousel-container {
+        min-height: 260px;
+    }
+}
